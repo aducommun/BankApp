@@ -2,6 +2,7 @@ package ch.hearc.ig.odi.customeraccount.application;
 
 import ch.hearc.ig.odi.customeraccount.business.*;
 import static ch.hearc.ig.odi.customeraccount.business.Account.transfer;
+import java.util.LinkedList;
 
 /**
  *
@@ -33,6 +34,8 @@ public class App {
         
         //Print
         System.out.println(clientADU.getFirstName() + " " + clientADU.getAccountByNumber("CS-10").getBalance());
+        
+        LinkedList<String> l = new LinkedList<>();
     }
     
 }

@@ -1,6 +1,7 @@
 package ch.hearc.ig.odi.customeraccount.business;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  *
@@ -10,13 +11,13 @@ public class Bank {
     
     private int number;
     private String name;
-    private ArrayList<Customer> customers;
+    private HashMap<Integer, Customer> customers;
     private ArrayList<Account> accounts;
 
     public Bank(int number, String name) {
         this.number = number;
         this.name = name;
-        this.customers = new ArrayList<>();
+        this.customers = new HashMap<>();
         this.accounts = new ArrayList<>();
     }
 
@@ -33,7 +34,7 @@ public class Bank {
     
     public Customer getCustomerByNumber(int number) {
         Customer r = null;
-            for (Customer c : getCustomers()) {
+            for (Customer c : getCustomers().values()) {
                 if (c.getNumber() == number) {
                     r = c;
                 }
@@ -41,8 +42,9 @@ public class Bank {
         return r;
     }
     
-    public void addCustomer(int number, String fn, String ln) {
-        getCustomers().add(new Customer(number, fn, ln));
+    public Customer addCustomer(int number, String fn, String ln) {
+        getCustomers().put(number, new Customer(number, fn, ln));
+        return customers.get(number);
     }
     
     public void addAccount(String number, String name, double rate, Customer customer) {
@@ -65,12 +67,12 @@ public class Bank {
         this.name = name;
     }
 
-    public ArrayList<Customer> getCustomers() {
+    public HashMap<Integer, Customer> getCustomers() {
         return customers;
     }
 
-    public void setCustomers(ArrayList<Customer> customer) {
-        this.customers = customer;
+    public void setCustomers(HashMap<Integer, Customer> customers) {
+        this.customers = customers;
     }
 
     public ArrayList<Account> getAccounts() {

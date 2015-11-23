@@ -1,27 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
+
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-    <head>
+<html lang="fr"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
         <title>Add customer</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    </head>
-    <body>
-
+    </h:head>
+    <h:body>
         <h1>Add new customer</h1>
-        <form method="GET" action="index.html">
-            Number: <input type="text" name="number" /><br />
-            First name : <input type="text" name="firstname" /><br />
-            Last name <input type="text" name="lastame"/><br />
-            <input type="submit" value="Create" />
-        </form>
-        <a href="index.html">index</a>
+        
+        <h:form>
+            Number : <h:inputText value="#{CustomerBean.id}"/>
+            <h:commandButton value="Add" action="index"/>
+        </h:form>
 
-    </body>
+    </h:body>
 </html>
 
 
