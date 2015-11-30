@@ -68,7 +68,6 @@ public class Services implements Serializable{
     public Map<Integer, Customer> getCustomers(){
         return bank.getCustomers();
     }
-    
     /**
      * Retourne une List contenant tous les clients de la banque.
      * Utile pour l'affichage des clients dans les facelets
