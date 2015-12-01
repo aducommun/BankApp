@@ -1,7 +1,10 @@
 package ch.hearc.ig.odi.customeraccount.business;
 
+
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  *
@@ -11,14 +14,14 @@ public class Bank {
     
     private int number;
     private String name;
-    private HashMap<Integer, Customer> customers;
-    private ArrayList<Account> accounts;
+    private Map<Integer, Customer> customers;
+    private List<Account> accounts;
 
     public Bank(int number, String name) {
         this.number = number;
         this.name = name;
-        this.customers = new HashMap<>();
-        this.accounts = new ArrayList<>();
+        this.customers = new HashMap();
+        this.accounts = new ArrayList();
     }
 
     
@@ -67,19 +70,19 @@ public class Bank {
         this.name = name;
     }
 
-    public HashMap<Integer, Customer> getCustomers() {
+    public Map<Integer, Customer> getCustomers() {
         return customers;
     }
 
-    public void setCustomers(HashMap<Integer, Customer> customers) {
+    public void setCustomers(Map<Integer, Customer> customers) {
         this.customers = customers;
     }
 
-    public ArrayList<Account> getAccounts() {
+    public List<Account> getAccounts() {
         return accounts;
     }
 
-    public void setAccounts(ArrayList<Account> accounts) {
+    public void setAccounts(List<Account> accounts) {
         this.accounts = accounts;
     }
     
