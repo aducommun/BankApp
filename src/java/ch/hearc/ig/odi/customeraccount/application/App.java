@@ -34,8 +34,6 @@ public class App {
         
         //Print
         System.out.println(clientADU.getFirstName() + " " + clientADU.getAccountByNumber("CS-10").getBalance());
-        
-        LinkedList<String> l = new LinkedList<>();
     }
     
 }
