@@ -12,15 +12,24 @@ import javax.inject.Named;
  *
  * @author alexandr.ducommun
  */
-
-@Named (value="customerBean")
+@Named(value = "customers")
 @SessionScoped
 public class CustomersBean implements Serializable {
-    
+
     @Inject Services services;
-    
-    @Inject
+
+
+    public Services getServices() {
+        return services;
+    }
+
+    public void setServices(Services services) {
+        this.services = services;
+    }
+
     public List<Customer> getCustomers() {
         return services.getCustomersList();
     }
+    
+
 }
