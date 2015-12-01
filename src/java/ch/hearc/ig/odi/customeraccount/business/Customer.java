@@ -4,12 +4,11 @@ import java.util.*;
 
 public class Customer {
 
-    private Collection<Account> accounts;
+    private List<Account> accounts;
     private int number;
     private String firstName;
     private String lastName;
 
-    
     
     /**
      *
@@ -23,7 +22,7 @@ public class Customer {
         this.lastName = lastName;
         this.accounts = new ArrayList<>();
     }
-
+    
     /**
      *
      * @param number Account number to research
@@ -65,11 +64,11 @@ public class Customer {
         this.lastName = lastName;
     }
 
-    public Collection<Account> getAccounts() {
+    public List<Account> getAccounts() {
         return accounts;
     }
 
-    public void setAccounts(Collection<Account> accounts) {
+    public void setAccounts(List<Account> accounts) {
         this.accounts = accounts;
     }
 
