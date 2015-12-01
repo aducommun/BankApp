@@ -2,21 +2,31 @@
 
 <!DOCTYPE html>
 <html lang="fr"
-    xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:f="http://java.sun.com/jsf/core"
-    xmlns:h="http://java.sun.com/jsf/html"
-    xmlns:ui="http://java.sun.com/jsf/facelets">
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
     <h:head>
         <title>Add customer</title>
     </h:head>
     <h:body>
-        <h1>Add new customer</h1>
-        
-        <h:form>
-            Number : <h:inputText value="#{CustomerBean.id}"/>
-            <h:commandButton value="Add" action="index"/>
+        <h1>Création d'un nouveau client</h1>
+        <h:form >
+            <p>
+                Numéro : <h:inputText id="numero" value="#{customer.number}" required="true"/>
+            </p>
+            <p>
+                Prénom : <h:inputText id="prenom" value="#{customer.firstName}" required="true"/>
+            </p>
+            <p>
+                Nom : <h:inputText id="nom" value="#{customer.lastName}" required="true"/>
+            </p>
+            <h:commandButton value="Réinitialiser" type="reset"/> 
+            <h:commandButton value="Valider" actionListener="#{customer.addCustomer}" action="customerList"/>
+            <p>
+                <h:commandButton value="Annuler" action="customersList"/>
+            </p>
         </h:form>
-
     </h:body>
 </html>
 
