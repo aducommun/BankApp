@@ -4,7 +4,7 @@ import ch.hearc.ig.odi.customeraccount.business.Customer;
 import ch.hearc.ig.odi.customeraccount.services.Services;
 import java.io.Serializable;
 import java.util.List;
-import javax.enterprise.context.SessionScoped;
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -13,7 +13,7 @@ import javax.inject.Named;
  * @author alexandr.ducommun
  */
 @Named(value = "customers")
-@SessionScoped
+@RequestScoped
 public class CustomersBean implements Serializable {
 
     @Inject Services services;
