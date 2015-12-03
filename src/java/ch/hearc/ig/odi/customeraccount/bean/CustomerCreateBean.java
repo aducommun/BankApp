@@ -2,7 +2,7 @@ package ch.hearc.ig.odi.customeraccount.bean;
 
 import ch.hearc.ig.odi.customeraccount.services.Services;
 import java.io.Serializable;
-import javax.enterprise.context.SessionScoped;
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -12,15 +12,14 @@ import javax.inject.Named;
  */
 
 @Named (value="customer")
-@SessionScoped
+@RequestScoped
 public class CustomerCreateBean implements Serializable{
 
     private int number;
     private String firstName;
     private String lastName;
 
-    @Inject
-    Services services;
+    @Inject Services services;
 
     public int getNumber() {
         return number;
@@ -46,8 +45,9 @@ public class CustomerCreateBean implements Serializable{
         this.lastName = lastName;
     }
 
-    public void addCustomer() {
+    public String addCustomer() {
         services.saveCustomer(number, firstName, lastName);
+        return "success";
     }
 
 }
