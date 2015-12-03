@@ -4,12 +4,11 @@ import java.util.*;
 
 public class Customer {
 
-    private List<Account> accounts;
+    private Map<String, Account> accounts;
     private int number;
     private String firstName;
     private String lastName;
 
-    
     /**
      *
      * @param number Client number
@@ -20,22 +19,17 @@ public class Customer {
         this.number = number;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.accounts = new ArrayList<>();
+        accounts = new HashMap();
     }
-    
+
     /**
+     * Return by id
      *
      * @param number Account number to research
      * @return Get account by number
      */
     public Account getAccountByNumber(String number) {
-        Account rs = null;
-        for (Account account : getAccounts()) {
-            if (account.getNumber().equals(number)) {
-                rs = account;
-            }
-        }
-        return rs;
+        return accounts.get(number);
     }
 
     /**
@@ -43,9 +37,20 @@ public class Customer {
      * @param number Account number to add
      * @param name Account name to add
      * @param rate Account rate to add
+     * @return created account
      */
-    public void addAccount(String number, String name, double rate) {
-        getAccounts().add(new Account(number, name, rate, this));
+    public Account addAccount(String number, String name, double rate) {
+        Account account = new Account(number, name, rate, this);
+        this.accounts.put(number, account);
+        return account;
+    }
+
+    public int getNumber() {
+        return number;
+    }
+
+    public void setNumber(int number) {
+        this.number = number;
     }
 
     public String getFirstName() {
@@ -64,19 +69,8 @@ public class Customer {
         this.lastName = lastName;
     }
 
-    public List<Account> getAccounts() {
+    public Map<String, Account> getAccounts() {
         return accounts;
     }
 
-    public void setAccounts(List<Account> accounts) {
-        this.accounts = accounts;
-    }
-
-    public int getNumber() {
-        return number;
-    }
-
-    public void setNumber(int number) {
-        this.number = number;
-    }
 }
