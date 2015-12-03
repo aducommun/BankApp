@@ -1,9 +1,6 @@
 package ch.hearc.ig.odi.customeraccount.business;
 
-
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -11,49 +8,57 @@ import java.util.Map;
  * @author alexandr.ducommun
  */
 public class Bank {
-    
+
     private int number;
     private String name;
     private Map<Integer, Customer> customers;
-    private List<Account> accounts;
+    private Map<String, Account> accounts;
 
     public Bank(int number, String name) {
         this.number = number;
         this.name = name;
         this.customers = new HashMap();
-        this.accounts = new ArrayList();
+        this.accounts = new HashMap();
     }
 
-    
     public Account getAccountByNumber(String number) {
-        Account r = null;
-        for (Account a : getAccounts()) {
-            if (a.getNumber().equals(number)) {
-                r = a;
-            }
-        }
-        return r;
+        return this.accounts.get(number);
     }
-    
+
     public Customer getCustomerByNumber(int number) {
-        Customer r = null;
-            for (Customer c : getCustomers().values()) {
-                if (c.getNumber() == number) {
-                    r = c;
-                }
-            }
-        return r;
+        return this.customers.get(number);
     }
-    
+
     public Customer addCustomer(int number, String fn, String ln) {
-        getCustomers().put(number, new Customer(number, fn, ln));
-        return customers.get(number);
+        Customer customer = null;
+
+        if (!customers.containsKey(number)) {
+            customer = new Customer(number, fn, ln);
+            customers.put(number, customer);
+        } else {
+            throw new IllegalStateException("A customer with that number already exists");
+        }
+
+        return customer;
     }
-    
-    public void addAccount(String number, String name, double rate, Customer customer) {
-        getAccounts().add(new Account(number, name, rate, customer));
+
+    public Account addAccount(String number, String name, double rate, Customer customer) {
+
+        Account account = null;
+
+        if (!customers.containsValue(customer)) {
+            throw new IllegalStateException("Customer doesn't belongs to that bank.");
+        }
+
+        if (!accounts.containsKey(number)) {
+            account = customer.addAccount(number, name, rate);
+        } else {
+            throw new IllegalStateException("An account with tha number already exists.");
+        }
+        
+        return account;
     }
-    
+
     public int getNumber() {
         return number;
     }
@@ -74,16 +79,8 @@ public class Bank {
         return customers;
     }
 
-    public void setCustomers(Map<Integer, Customer> customers) {
-        this.customers = customers;
-    }
-
-    public List<Account> getAccounts() {
+    public Map<String, Account> getAccounts() {
         return accounts;
     }
 
-    public void setAccounts(List<Account> accounts) {
-        this.accounts = accounts;
-    }
-    
 }
