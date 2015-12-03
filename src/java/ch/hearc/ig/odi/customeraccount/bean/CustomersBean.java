@@ -18,18 +18,8 @@ public class CustomersBean implements Serializable {
 
     @Inject Services services;
 
-
-    public Services getServices() {
-        return services;
-    }
-
-    public void setServices(Services services) {
-        this.services = services;
-    }
-
     public List<Customer> getCustomers() {
         return services.getCustomersList();
     }
-    
 
 }
